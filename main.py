@@ -1,3 +1,5 @@
+import os
+
 import requests
 
 BASE_URL = "https://www.bing.com/HPImageArchive.aspx?format=js&idx=0&n=1&mkt=zh-CN"
@@ -6,6 +8,7 @@ IMG_PATH = "img/bing.jpg"
 
 
 def save_img(url, img_path):
+    os.makedirs(os.path.dirname(img_path), exist_ok=True)
     img = requests.get(url)
     with open(img_path, "wb") as f:
         f.write(img.content)
