@@ -29,7 +29,6 @@ def upload_qiniu(access_key: str, secret_key: str, bucket_name: str, key: str) -
 
 
 if __name__ == "__main__":
-    print(os.environ)
     access_key = os.environ["QINIU_ACCESS_KEY"]
     secret_key = os.environ["QINIU_SECRET_KEY"]
     bucket_name = os.environ["BUCKET_NAME"]
