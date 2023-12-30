@@ -37,6 +37,7 @@ jobs:
           QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
           KEY: ${{ secrets.KEY }}
           BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
+          ENV_KEY: "env_key"
         run: python ./upload.py
 
       - name: Commit files
