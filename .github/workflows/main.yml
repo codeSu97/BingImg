@@ -31,11 +31,14 @@ jobs:
       - name: "Run Python Script"
         run: python ./main.py
 
+      - name: "Upload Img To Qiniu"
+        run: python ./upload.py ${{ secrets.QINIU_ACCESS_KEY }} ${{ secrets.QINIU_SECRET_KEY }} ${{ secrets.KEY }} ${{ secrets.BUCKET_NAME }}
+
       - name: Commit files
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
-          git add .
+          git add ./img
           git commit -m "🐎 ci: Github Actions Update Img"
 
       - name: Push changes
