@@ -32,7 +32,12 @@ jobs:
         run: python ./main.py
 
       - name: "Upload Img To Qiniu"
-        run: python ./upload.py ${{ secrets.QINIU_ACCESS_KEY }} ${{ secrets.QINIU_SECRET_KEY }} ${{ secrets.KEY }} ${{ secrets.BUCKET_NAME }}
+        run: python ./upload.py
+        env:
+          QINIU_ACCESS_KEY: ${{ secrets.QINIU_ACCESS_KEY }}
+          QINIU_SECRET_KEY: ${{ secrets.QINIU_SECRET_KEY }}
+          KEY: ${{ secrets.KEY }}
+          BUCKET_NAME: ${{ secrets.BUCKET_NAME }}
 
       - name: Commit files
         run: |

@@ -1,4 +1,4 @@
-import sys
+import os
 
 from constant import IMG_PATH_4K
 
@@ -8,6 +8,8 @@ def upload_qiniu(access_key: str, secret_key: str, bucket_name: str, key: str) -
     上传图片到七牛云
     :param access_key: 七牛云 Access Key
     :param secret_key: 七牛云 Secret Key
+    :param bucket_name: 七牛云存储空间名称
+    :param key: 七牛云存储空间中的文件名
     :return: None
     """
 
@@ -27,9 +29,8 @@ def upload_qiniu(access_key: str, secret_key: str, bucket_name: str, key: str) -
 
 
 if __name__ == "__main__":
-    args = sys.argv
-    access_key = args[1]
-    secret_key = args[2]
-    bucket_name = args[3]
-    key = args[4]
+    access_key = os.environ["QINIU_ACCESS_KEY"]
+    secret_key = os.environ["QINIU_SECRET_KEY"]
+    bucket_name = os.environ["BUCKET_NAME"]
+    key = os.environ["KEY"]
     upload_qiniu(access_key, secret_key, bucket_name, key)
